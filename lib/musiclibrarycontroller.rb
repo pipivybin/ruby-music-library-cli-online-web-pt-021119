@@ -53,14 +53,6 @@ def list_songs_by_genre
   find = Genre.find_by_name(input)
   find.songs.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name}"}
 end
-
-  # loop do
-  #   puts "Please enter the name of a genre:"
-  #   inputt = gets.chomp
-  #   break if @songs.collect{|x| x.split(" - ")[2] == "#{inputt}"}
-  # end
-  # target_songs = @songs.collect{|x| x.split(" - ")[2] == "#{inputt}"}
-  # target_songs.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|value, index| puts "#{index+1}. #{x.split(" - ")[0]} - #{x.split(" - ")[1]}"}
 end
 
 def play_song
