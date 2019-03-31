@@ -49,9 +49,9 @@ end
 def list_songs_by_genre
   puts "Please enter the name of a genre:"
   input = gets.chomp
-  # if Song.all.collect{|x| x.artist.name.include?(input)} != nil
-  if Song.all.detect{|x| x.genre.name == input} != nil
-  Song.all.detect{|x| x.genre.name == input}.each_with_index{|value, index| puts "#{index+1}. #{x.artist.name} - #{x.name}"}
+  if Artist.find_by_name(input)
+  artist_find = Artist.find_by_name(input)
+  artist_find.songs.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.name} - #{x.genre.name}"}
 end
 
   # loop do
