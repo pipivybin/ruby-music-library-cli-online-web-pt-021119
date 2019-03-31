@@ -58,6 +58,7 @@ def play_song
   input = gets.chomp
   if Song.find_by_name(input)
     puts "Playing #{input}"
+  end
 end
 
 end
