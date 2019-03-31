@@ -50,8 +50,7 @@ def list_songs_by_genre
   puts "Please enter the name of a genre:"
   input = gets.chomp
   if Genre.find_by_name(input)
-  find = Genre.find_by_name(input)
-  find.songs.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name}"}
+  Genre.find_by_name(input).songs.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name}"}
 end
 end
 
