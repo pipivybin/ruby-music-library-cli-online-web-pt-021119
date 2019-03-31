@@ -65,7 +65,7 @@ def play_song
       puts "Playing #{@list[input.to_i-1].name}"
     end
   elsif input.class == Integer
-    if input <= Song.all.length
+    if input <= Song.all.length && input > 0
     puts "Playing #{@list[input-1].name}"
   end
   end
