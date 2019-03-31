@@ -58,7 +58,9 @@ def play_song
   puts "Which song number would you like to play?"
   input = gets.chomp
   if input <= Song.all.length
-    puts "Playing #{input}"
+
+
+    puts "Playing #{@list[input-1].name}"
   end
 end
 
