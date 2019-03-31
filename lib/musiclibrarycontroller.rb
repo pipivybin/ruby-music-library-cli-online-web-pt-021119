@@ -24,7 +24,8 @@ end
 end
 
 def list_songs
-  Song.all.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}" }
+  list = Song.all.sort{|a, b| a.name <=> b.name}
+  list.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}" }
   # @new.files.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|x, index| puts "#{index+1}. #{x.split(".")[0]}"}
 end
 
