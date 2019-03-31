@@ -42,7 +42,8 @@ def list_songs_by_artist
   input = gets.chomp
   # if Song.all.collect{|x| x.artist.name.include?(input)} != nil
   if Artist.find_by_name(input)
-  Artist.find_by_name(input).
+  artist_find = Artist.find_by_name(input)
+  artist_find.
   # .each_with_index{|value, index| puts "#{index+1}. #{x.name} - #{x.genre.name}"}
 end
 end
