@@ -67,6 +67,7 @@ def play_song
     if input <= Song.all.length
     puts "Playing #{@list[input-1].name}"
   end
+  end
 end
 
 end
