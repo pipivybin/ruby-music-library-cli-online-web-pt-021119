@@ -24,12 +24,13 @@ end
 end
 
 def list_songs
-  @new.files.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|x, index| puts "#{index+1}. #{x.split(".")[0]}"}
+  Song.all.sort{|a, b| a.name <=> b.name}.each_with_index{|x, index| puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}" }
+  # @new.files.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|x, index| puts "#{index+1}. #{x.split(".")[0]}"}
 end
 
 def list_artists
-  @new.files.collect{|x| x.split(" - ")[0]}.uniq.sort.each_with_index{|x, index| puts "#{index+1}. #{x}" }
-  # @new.files.sort{|a, b| a.split(" - ")[0] <=> b.split(" - ")[0]}.uniq.each_with_index{|x, index| puts "#{index+1}. #{x.split(" - ")[0]}"}
+  Song.all.collect{|x| x.artist.name}.uniq.sort.each_with_index{|x, index| puts "#{index+1}. #{x}" }
+  # @new.files.collect{|x| x.split(" - ")[0]}.uniq.sort.each_with_index{|x, index| puts "#{index+1}. #{x}" }
 end
 
 def list_genres
@@ -37,23 +38,30 @@ def list_genres
 end
 
 def list_songs_by_artist
-  loop do
   puts "Please enter the name of an artist:"
   input = gets.chomp
-  break if @songs.collect{|x| x.split(" - ")[0] == "#{input}"}
-  end
-  target_songs = @songs.collect{|x| x.split(" - ")[0] == "#{input}"}
-  target_songs.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|value, index| puts "#{index+1}. #{x..split(" - ")[1]} - #{x..split(" - ")[2]}"}
+  # if Song.all.collect{|x| x.artist.name.include?(input)} != nil
+  if Artist.find_by_name(input)
+  Artist.find_by_name(input).
+  # .each_with_index{|value, index| puts "#{index+1}. #{x.name} - #{x.genre.name}"}
+end
 end
 
 def list_songs_by_genre
-  loop do
-    puts "Please enter the name of a genre:"
-    input = gets.chomp
-    break if @songs.collect{|x| x.split(" - ")[2] == "#{input}"}
-  end
-  target_songs = @songs.collect{|x| x.split(" - ")[2] == "#{input}"}
-  target_songs.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|value, index| puts "#{index+1}. #{x.split(" - ")[0]} - #{x.split(" - ")[1]}"}
+  puts "Please enter the name of a genre:"
+  input = gets.chomp
+  # if Song.all.collect{|x| x.artist.name.include?(input)} != nil
+  if Song.all.detect{|x| x.genre.name == input} != nil
+  Song.all.detect{|x| x.genre.name == input}.each_with_index{|value, index| puts "#{index+1}. #{x.artist.name} - #{x.name}"}
+end
+
+  # loop do
+  #   puts "Please enter the name of a genre:"
+  #   inputt = gets.chomp
+  #   break if @songs.collect{|x| x.split(" - ")[2] == "#{inputt}"}
+  # end
+  # target_songs = @songs.collect{|x| x.split(" - ")[2] == "#{inputt}"}
+  # target_songs.sort{|a, b| a.split(" - ")[1] <=> b.split(" - ")[1]}.each_with_index{|value, index| puts "#{index+1}. #{x.split(" - ")[0]} - #{x.split(" - ")[1]}"}
 end
 
 def play_song
