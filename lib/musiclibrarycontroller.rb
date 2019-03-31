@@ -60,7 +60,7 @@ def play_song
   if input.class == String
     if Song.find_by_name(input)
     puts "Playing #{input}"
-    if input.to_i <= Song.all.length
+  elsif input.to_i <= Song.all.length
       puts "Playing #{@list[input.to_i-1].name}"
   elsif input.class == Integer
     if input <= Song.all.length
