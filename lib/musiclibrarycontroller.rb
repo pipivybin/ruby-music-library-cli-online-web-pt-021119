@@ -59,8 +59,7 @@ def play_song
   input = gets.chomp
   if Song.find_by_name(input)
     puts "Playing #{input}"
-
-  if input <= Song.all.length
+  elsif input <= Song.all.length
     puts "Playing #{@list[input-1].name}"
   end
 end
